@@ -5,6 +5,7 @@ def main():
     board_rc = []
     for _ in range(8):
         board_rc.append(['-', '-', '-', '-', '-', '-', '-', '-',])
+    board_rc[y][x] = '⚪️'
     print(*board_rc, sep = '\n')
 
 

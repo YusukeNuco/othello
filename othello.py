@@ -12,11 +12,11 @@ def main():
 
     print("\n")
 
-
     for i in range(len(row_lis_2)):
         if row_lis_2[i] == 0:
             row_lis_2[i] = "- "
         print(row_lis_2)
+
 
 print(f"__name__: {__name__}")
 
