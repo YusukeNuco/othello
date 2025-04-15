@@ -44,9 +44,30 @@ def main():
     board_rc[4][3] = '○'
     board_rc[3][4] = '○'
     print("black")
-    black(board=board_rc, y=int(input()), x=int(input()))
+    by = int(input())
+    bx = int(input())
+    black(board=board_rc, y=by, x=bx)
+    show_board(board=board_rc)
+    while board_rc[by][bx] != '○':
+        by2 = int(input())
+        bx2 = int(input())
+        black(board=board_rc, y=by2, x=bx2)
+        show_board(board=board_rc)
+        if board_rc[by2][bx2] == '○':
+            break
+    show_board(board=board_rc)
     print("white")
-    white(board=board_rc, y=int(input()), x=int(input()))
+    wy = int(input())
+    wx = int(input())
+    white(board=board_rc, y=wy, x=wx)
+    show_board(board=board_rc)
+    while board_rc[wy][wx] != '●':
+        wy2 = int(input())
+        wx2 = int(input())
+        white(board=board_rc, y=wy2, x=wx2)
+        show_board(board=board_rc)
+        if board_rc[wy2][wx2] == '●':
+            break
     show_board(board=board_rc)
     judgement(board=board_rc)
 
