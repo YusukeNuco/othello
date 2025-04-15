@@ -4,17 +4,20 @@ def show_board(board: list[list[str]]):
         print(*row)
 
 
+# 初期配置
+def initial_position(board: list[list[str]]):
+    board[3][3] = '●'
+    board[4][4] = '●'
+    board[4][3] = '○'
+    board[3][4] = '○'
+
+
 # 黒石を置く
 def black(board, y, x):
     if board[y][x] == '-':
         board[y][x] = '○'
     else:
         print('置けません')
-
-
-# def black(board, y, x):
-#     while board[y][x] == '-':
-#         board[y][x] = '○'
 
 
 # 白石を置く
@@ -44,10 +47,7 @@ def main():
     board_rc = []
     for _ in range(8):
         board_rc.append(['-', '-', '-', '-', '-', '-', '-', '-',])
-    board_rc[3][3] = '●'
-    board_rc[4][4] = '●'
-    board_rc[4][3] = '○'
-    board_rc[3][4] = '○'
+    initial_position(board=board_rc)
     print("black")
     by = int(input())
     bx = int(input())
