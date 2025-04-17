@@ -4,14 +4,14 @@
 def black_upper(board, y, x):
     gap = y
     if board[y-1][x] != '●':
-        False
+        return False
     else:
         for i in range(gap):
-            if board[y-i-i][x] == '○':
-                True
+            if board[y-i-1][x] == '○':
+                return True
                 break
             elif board[y-i-1][x] == '-':
-                False
+                return False
             else:
                 continue
 
@@ -19,14 +19,14 @@ def black_upper(board, y, x):
 def white_upper(board, y, x):
     gap = y
     if board[y-1][x] != '○':
-        False
+        return False
     else:
         for i in range(gap):
             if board[y-i-1][x] == '●':
-                True
+                return True
                 break
             elif board[y-i-1][x] == '-':
-                False
+                return False
             else:
                 continue
 
@@ -35,14 +35,14 @@ def white_upper(board, y, x):
 def black_upper_right(board, y, x):
     gap = y
     if board[y-1][x+1] != '●':
-        False
+        return False
     else:
         for i in range(gap):
             if board[y-i-1][x+i+1] == '○':
-                True
+                return True
                 break
             elif board[y-i-1][x+i+1] == '-':
-                False
+                return False
             else:
                 continue
 
@@ -50,14 +50,14 @@ def black_upper_right(board, y, x):
 def white_upper_right(board, y, x):
     gap = y
     if board[y-1][x+1] != '○':
-        False
+        return False
     else:
         for i in range(gap):
             if board[y-i-1][x+i+1] == '●':
-                True
+                return True
                 break
             elif board[y-i-1][x+i+1] == '-':
-                False
+                return False
             else:
                 continue
 
@@ -66,14 +66,14 @@ def white_upper_right(board, y, x):
 def black_right(board, y, x):
     gap = 7-x                                           # X座標と右端との差分を gap に格納
     if board[y][x+1] != '●':                            # 右が白石じゃないなら置けない。
-        False
+        return False
     else:                                               # 右が白石だったら
         for i in range(gap):                            # 白石より右にある黒石を、差分の数だけ探索していく
             if board[y][x+i+1] == '○':                  # 白石より右側に黒石を見つけたら
-                True                                    # 入力した座標に石を置く。
+                return True                                    # 入力した座標に石を置く。
                 break                                   # 置いた時点で右への探索を切り上げる。
             elif board[y][x+i+1] == '-':                # 白石より右側に何もなかった場合、置けない。
-                False
+                return False
             else:
                 continue                                # '○' でも '-' でもない = 白石だった場合何もしない。
 
@@ -81,14 +81,14 @@ def black_right(board, y, x):
 def white_right(board, y, x):
     gap = 7-x
     if board[y][x+1] != '○':
-        False
+        return False
     else:
         for i in range(gap):
             if board[y][y+i*1] == '●':
-                True
+                return True
                 break
             elif board[y][x+i+1] == '-':
-                False
+                return False
             else:
                 continue
 
@@ -97,14 +97,14 @@ def white_right(board, y, x):
 def black_lower_right(board, y, x):
     gap = 7-x
     if board[y+1][x+1] != '●':
-        False
+        return False
     else:
         for i in range(gap):
             if board[y+i+1][x+i+1] == '○':
-                True
+                return True
                 break
             elif board[y+i+1][x+i+1] == '-':
-                False
+                return False
             else:
                 continue
 
@@ -112,14 +112,14 @@ def black_lower_right(board, y, x):
 def white_lower_right(board, y, x):
     gap = 7-x
     if board[y+1][x+1] != '○':
-        False
+        return False
     else:
         for i in range(gap):
             if board[y+i+1][x+i+1] == '●':
-                True
+                return True
                 break
             elif board[y+i+1][x+i+1] == '-':
-                False
+                return False
             else:
                 continue
 
@@ -128,14 +128,14 @@ def white_lower_right(board, y, x):
 def black_lower(board, y, x):
     gap = 7-y
     if board[y+1][x] != '●':
-        False
+        return False
     else:
         for i in range(gap):
             if board[y+i+1][x] == '○':
-                True
+                return True
                 break
             elif board[y+i+1][x] == '-':
-                False
+                return False
             else:
                 continue
 
@@ -143,14 +143,14 @@ def black_lower(board, y, x):
 def white_lower(board, y, x):
     gap = 7-y
     if board[y+1][x] != '○':
-        False
+        return False
     else:
         for i in range(gap):
             if board[y+i+1][x] == '●':
-                True
+                return True
                 break
             elif board[y+i+1][x] == '-':
-                False
+                return False
             else:
                 continue
 
@@ -159,14 +159,14 @@ def white_lower(board, y, x):
 def black_lower_left(board, y, x):
     gap = x
     if board[y+1][x-1] != '●':
-        False
+        return False
     else:
         for i in range(gap):
             if board[y+i+1][x-i-1] == '○':
-                True
+                return True
                 break
             elif board[y+i+1][x-i-1] == '-':
-                False
+                return False
             else:
                 continue
 
@@ -174,14 +174,14 @@ def black_lower_left(board, y, x):
 def white_lower_left(board, y, x):
     gap = x
     if board[y+1][x-1] != '○':
-        False
+        return False
     else:
         for i in range(gap):
             if board[y+i+1][x-i-1] == '●':
-                True
+                return True
                 break
             elif board[y+i+1][x-i-1] == '-':
-                False
+                return False
             else:
                 continue
 
@@ -190,14 +190,14 @@ def white_lower_left(board, y, x):
 def black_left(board, y, x):
     gap = x
     if board[y][x-1] != '●':
-        False
+        return False
     else:
         for i in range(gap):
             if board[y][x-i-1] == '○':
-                True
+                return True
                 break
             elif board[y][x-i-1] == '-':
-                False
+                return False
             else:
                 continue
 
@@ -205,14 +205,14 @@ def black_left(board, y, x):
 def white_left(board, y, x):
     gap = x
     if board[y][x-1] != '○':
-        False
+        return False
     else:
         for i in range(gap):
             if board[y][x-i-1] == '●':
-                True
+                return True
                 break
             elif board[y][x-i-1] == '-':
-                False
+                return False
             else:
                 continue
 
@@ -221,14 +221,14 @@ def white_left(board, y, x):
 def black_upper_left(board, y, x):
     gap = x
     if board[y-1][x-1] != '●':
-        False
+        return False
     else:
         for i in range(gap):
             if board[y-i-1][x-i-1] == '○':
-                True
+                return True
                 break
             elif board[y-i-1][x-i-1] == '-':
-                False
+                return False
             else:
                 continue
 
@@ -236,14 +236,14 @@ def black_upper_left(board, y, x):
 def white_upper_left(board, y, x):
     gap = x
     if board[y-1][x-1] != '○':
-        False
+        return False
     else:
         for i in range(gap):
             if board[y-i-1][x-i-1] == '●':
-                True
+                return True
                 break
             elif board[y-i-1][x-i-1] == '-':
-                False
+                return False
             else:
                 continue
 
@@ -343,16 +343,16 @@ def main():
     print("Turn: Black")
     by = int(by_input())
     bx = int(bx_input())
-    if judge_vacant(board=board_rc, y=by, x=bx) is True:        # 入力座標が空きマスか判定
-        if black_upper(board=board_rc, y=by, x=bx) or \
-            black_upper_right(board_rc, y=by, x=bx) or \
-            black_right(board_rc, y=by, x=bx) or \
-            black_lower_right(board_rc, y=by, x=bx) or \
-            black_lower(board_rc, y=by, x=bx) or \
-            black_lower_left(board_rc, y=by, x=bx) or \
-            black_left(board_rc, y=by, x=bx) or \
-            black_upper_left(board_rc, y=by, x=bx) is True:     # 入力を起点に8方向を探索
-            black(board=board_rc, y=by, x=bx)                   # 黒石を置く
+    if judge_vacant(board=board_rc, y=by, x=bx) is True:
+        if black_upper(board=board_rc, y=by, x=bx) or\
+              black_upper_right(board=board_rc, y=by, x=bx) or\
+              black_right(board=board_rc, y=by, x=bx) or\
+              black_lower_right(board=board_rc, y=by, x=bx) or\
+              black_lower(board=board_rc, y=by, x=bx) or\
+              black_lower_left(board=board_rc, y=by, x=bx) or\
+              black_left(board=board_rc, y=by, x=bx) or\
+              black_upper_left(board=board_rc, y=by, x=bx) is True:
+            black(board=board_rc, y=by, x=bx)
         else:
             print('置けません')
     else:
@@ -363,18 +363,18 @@ def main():
     wx = int(wy_input())
     if judge_vacant(board=board_rc, y=wy, x=wx) is True:
         if white_upper(board=board_rc, y=wy, x=wx) or\
-            white_upper_right(board_rc, wy, wx) or \
-            white_right(board_rc, wy, wx) or \
-            white_lower_right(board_rc, wy, wx) or \
-            white_lower(board_rc, wy, wx) or \
-            white_lower_left(board_rc, wy, wx) or \
-            white_left(board_rc, wy, wx) or \
-            white_upper_left(board_rc, wy, wx) is True:
+              white_upper_right(board_rc, wy, wx) or\
+              white_right(board_rc, wy, wx) or\
+              white_lower_right(board_rc, wy, wx) or\
+              white_lower(board_rc, wy, wx) or\
+              white_lower_left(board_rc, wy, wx) or\
+              white_left(board_rc, wy, wx) or\
+              white_upper_left(board_rc, wy, wx) is True:
             white(board=board_rc, y=wy, x=wx)
         else:
-            ('置けません')
+            print('置けません')
     else:
-        ('空いていません')
+        print('空いていません')
     show_board(board=board_rc)
 
 

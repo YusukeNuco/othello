@@ -1,3 +1,28 @@
+if judge_vacant(board=board_rc, y=by, x=bx) is True:
+        if black_upper(board=board_rc, y=by, x=bx) is True:
+            black(board=board_rc, y=by, x=bx)
+        elif black_upper_right(board_rc, y=by, x=bx) is True:
+            black(board=board_rc, y=by, x=bx)
+        elif black_right(board_rc, y=by, x=bx) is True:
+            black(board=board_rc, y=by, x=bx)
+        elif black_lower_right(board_rc, y=by, x=bx) is True:
+            black(board=board_rc, y=by, x=bx)
+        elif black_lower(board_rc, y=by, x=bx) is True:
+            black(board=board_rc, y=by, x=bx)
+        elif black_lower_left(board_rc, y=by, x=bx) is True:
+            black(board=board_rc, y=by, x=bx)
+        elif black_left(board_rc, y=by, x=bx) is True:
+            black(board=board_rc, y=by, x=bx)
+        elif black_upper_left(board_rc, y=by, x=bx) is True:
+            black(board=board_rc, y=by, x=bx)
+        else:
+            print('置けません')
+    else:
+        print('空いていません')
+
+
+
+
 row_lis = [0, 1, 2]
 
 for j in row_lis:
@@ -39,5 +64,11 @@ def black_right(board, y, x):
 
 
 def white_to_black(board, y, x):
-    if board[y-1][x] == '●':
-        
+    if board[y-1][x] == '●':                    # 上の反転
+        gap = x
+        for i in range(gap):
+            if board[y-i-1][x] == '●':
+                board[y-i-1][x] = '○'
+            else:
+                break
+    elif board[]
