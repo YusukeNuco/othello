@@ -71,4 +71,3 @@ def white_to_black(board, y, x):
                 board[y-i-1][x] = '○'
             else:
                 break
-    elif board[]

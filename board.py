@@ -335,6 +335,114 @@ def judge_vacant(board, y, x):
         return True
 
 
+# 白石を黒石に反転
+def white_to_black(board, y, x):
+    if board[y-1][x] == '●':                    # 上の反転
+        for i in range(x):
+            if board[y-i-1][x] == '●':
+                board[y-i-1][x] = '○'
+            else:                               # '○'に到達
+                break
+    elif board[y-1][x+1] == '●':                # 右上の反転
+        for i in range(y):
+            if board[y-i-1][x+i+1] == '●':
+                board[y-i-1][x+i+1] = '○'
+            else:
+                break
+    elif board[y][x+1] == '●':                  # 右の反転
+        for i in range(7-x):
+            if board[y][x+i+1] == '●':
+                board[y][x+i+1] = '○'
+            else:
+                break
+    elif board[y+1][x+1] == '●':                # 右下の反転
+        for i in range(7-x):
+            if board[y+i+1][x+i+1] == '●':
+                board[y+i+1][x+i+1] = '○'
+            else:
+                break
+    elif board[y+1][x] == '●':                  # 下の反転
+        for i in range(7-y):
+            if board[y+i+1][x] == '●':
+                board[y+i+1][x] = '○'
+            else:
+                break
+    elif board[y+1][x-1] == '●':                # 左下の反転
+        for i in range(x):
+            if board[y+i+1][x-i-1] == '●':
+                board[y+i+1][x-i-1] = '○'
+            else:
+                break
+    elif board[y][x-1] == '●':                  # 左の反転
+        for i in range(x):
+            if board[y][x-i-1] == '●':
+                board[y][x-i-1] = '○'
+            else:
+                break
+    elif board[y-1][x-1] == '●':                # 左上の反転
+        for i in range(y):
+            if board[y-i-1][x-i-1] == '●':
+                board[y-i-1][x-i-1] = '○'
+            else:
+                break
+    else:
+        print('何かが起きている')
+
+
+# 黒石を白石に反転
+def black_to_white(board, y, x):
+    if board[y-1][x] == '○':                    # 上の反転
+        for i in range(x):
+            if board[y-i-1][x] == '○':
+                board[y-i-1][x] = '●'
+            else:                               # '○'に到達
+                break
+    elif board[y-1][x+1] == '○':                # 右上の反転
+        for i in range(y):
+            if board[y-i-1][x+i+1] == '○':
+                board[y-i-1][x+i+1] = '●'
+            else:
+                break
+    elif board[y][x+1] == '○':                  # 右の反転
+        for i in range(7-x):
+            if board[y][x+i+1] == '○':
+                board[y][x+i+1] = '●'
+            else:
+                break
+    elif board[y+1][x+1] == '○':                # 右下の反転
+        for i in range(7-x):
+            if board[y+i+1][x+i+1] == '○':
+                board[y+i+1][x+i+1] = '●'
+            else:
+                break
+    elif board[y+1][x] == '○':                  # 下の反転
+        for i in range(7-y):
+            if board[y+i+1][x] == '○':
+                board[y+i+1][x] = '●'
+            else:
+                break
+    elif board[y+1][x-1] == '○':                # 左下の反転
+        for i in range(x):
+            if board[y+i+1][x-i-1] == '○':
+                board[y+i+1][x-i-1] = '●'
+            else:
+                break
+    elif board[y][x-1] == '○':                  # 左の反転
+        for i in range(x):
+            if board[y][x-i-1] == '○':
+                board[y][x-i-1] = '●'
+            else:
+                break
+    elif board[y-1][x-1] == '○':                # 左上の反転
+        for i in range(y):
+            if board[y-i-1][x-i-1] == '○':
+                board[y-i-1][x-i-1] = '●'
+            else:
+                break
+    else:
+        print('何かが起きている')
+
+
 def main():
     board_rc = []
     for _ in range(8):
@@ -357,6 +465,7 @@ def main():
             print('置けません')
     else:
         print('空いていません')
+    white_to_black(board=board_rc, y=by, x=bx)
     show_board(board=board_rc)
     print('Turn: White')
     wy = int(wy_input())
@@ -375,6 +484,7 @@ def main():
             print('置けません')
     else:
         print('空いていません')
+    black_to_white(board=board_rc, y=wy, x=wx)
     show_board(board=board_rc)
 
 
