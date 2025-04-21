@@ -319,7 +319,7 @@ def wy_input():
 
 # 白石のX座標入力
 def wx_input():
-    white_x = input('Y座標を入力してください')
+    white_x = input('X座標を入力してください')
     if white_x in ('0', '1', '2', '3', '4', '5', '6', '7'):
         return white_x
     else:
@@ -335,112 +335,301 @@ def judge_vacant(board, y, x):
         return True
 
 
-# 白石を黒石に反転
-def white_to_black(board, y, x):
-    if board[y-1][x] == '●':                    # 上の反転
-        for i in range(x):
-            if board[y-i-1][x] == '●':
-                board[y-i-1][x] = '○'
-            else:                               # '○'に到達
-                break
-    elif board[y-1][x+1] == '●':                # 右上の反転
+# 上反転
+def upper_to_black(board, y, x):                # 上探索
+    if board[y-1][x] == '●':
         for i in range(y):
-            if board[y-i-1][x+i+1] == '●':
-                board[y-i-1][x+i+1] = '○'
+            if board[y-i-1][x] == '○':
+                u_to_black(board, y, x)
             else:
-                break
-    elif board[y][x+1] == '●':                  # 右の反転
+                pass
+
+
+def u_to_black(board, y, x):                      # 上反転
+    for i in range(y):
+        if board[y-i-1][x] == '●':
+            board[y-i-1][x] = '○'
+        else:
+            break
+
+
+def upper_to_white(board, y, x):
+    if board[y-1][x] == '○':
+        for i in range(y):
+            if board[y-i-1][x] == '●':
+                u_to_white(board, y, x)
+            else:
+                pass
+
+
+def u_to_white(board, y, x):
+    for i in range(y):
+        if board[y-i-1][x] == '○':
+            board[y-i-1][x] = '●'
+        else:
+            break
+
+
+# 右上反転
+def upper_right_to_black(board, y, x):
+    if board[y-1][x+1] == '●':
+        for i in range(7-x):
+            if board[y-i-1][x+i+1] == '○':
+                ur_to_black(board, y, x)
+            else:
+                pass
+
+
+def ur_to_black(board, y, x):
+    for i in range(7-x):
+        if board[y-i-1][x+i+1] == '●':
+            board[y-i-1][x+i+1] = '○'
+        else:
+            break
+
+
+def upper_right_to_white(board, y, x):
+    if board[y-1][x+1] == '○':
+        for i in range(7-x):
+            if board[y-i-1][x+i+1] == '●':
+                ur_to_white(board, y, x)
+            else:
+                pass
+
+
+def ur_to_white(board, y, x):
+    for i in range(7-x):
+        if board[y-i-1][x+i+1] == '○':
+            board[y-i-1][x+i+1] = '●'
+        else:
+            break
+
+
+# 右反転
+def right_to_black(board, y, x):
+    if board[y][x+1] == '●':
+        for i in range(7-x):
+            if board[y][x+i+1] == '○':
+                r_to_black(board, y, x)
+            else:
+                pass
+
+
+def r_to_black(board, y, x):
+    for i in range(7-x):
+        if board[y][x+i+1] == '●':
+            board[y][x+i+1] = '○'
+        else:
+            break
+
+
+def right_to_white(board, y, x):
+    if board[y][x+1] == '○':
         for i in range(7-x):
             if board[y][x+i+1] == '●':
-                board[y][x+i+1] = '○'
+                r_to_white(board, y, x)
             else:
-                break
-    elif board[y+1][x+1] == '●':                # 右下の反転
+                pass
+
+
+def r_to_white(board, y, x):
+    for i in range(7-x):
+        if board[y][x+i+1] == '○':
+            board[y][x+i+1] = '●'
+        else:
+            break
+
+
+def lower_right_to_black(board, y, x):
+    if board[y+1][x+1] == '●':
+        for i in range(7-x):
+            if board[y+i+1][x+i+1] == '○':
+                lr_to_black(board, y, x)
+            else:
+                pass
+
+
+def lr_to_black(board, y, x):
+    for i in range(7-x):
+        if board[y+i+1][x+i+1] == '●':
+            board[y+i+1][x+i+1] = '○'
+        else:
+            break
+
+
+def lower_right_to_white(board, y, x):
+    if board[y+1][x+1] == '○':
         for i in range(7-x):
             if board[y+i+1][x+i+1] == '●':
-                board[y+i+1][x+i+1] = '○'
+                lr_to_white(board, y, x)
             else:
-                break
-    elif board[y+1][x] == '●':                  # 下の反転
+                pass
+
+
+def lr_to_white(board, y, x):
+    for i in range(7-x):
+        if board[y+i+1][x+i+1] == '○':
+            board[y+i+1][x+i+1] = '●'
+        else:
+            break
+
+
+def lower_to_black(board, y, x):
+    if board[y+1][x] == '●':
+        for i in range(7-y):
+            if board[y+i+1][x] == '○':
+                l_to_black(board, y, x)
+            else:
+                pass
+
+
+def l_to_black(board, y, x):
+    for i in range(7-y):
+        if board[y+i+1][x] == '●':
+            board[y+i+1][x] = '○'
+        else:
+            break
+
+
+def lower_to_white(board, y, x):
+    if board[y+1][x] == '○':
         for i in range(7-y):
             if board[y+i+1][x] == '●':
-                board[y+i+1][x] = '○'
+                l_to_white(board, y, x)
             else:
-                break
-    elif board[y+1][x-1] == '●':                # 左下の反転
+                pass
+
+
+def l_to_white(board, y, x):
+    for i in range(7-y):
+        if board[y+i+1][x] == '○':
+            board[y+i+1][x] = '●'
+        else:
+            break
+
+
+def lower_left_to_black(board, y, x):
+    if board[y+1][x-1] == '●':
+        for i in range(x):
+            if board[y+i+1][x-i-1] == '○':
+                ll_to_black(board, y, x)
+            else:
+                pass
+
+
+def ll_to_black(board, y, x):
+    for i in range(x):
+        if board[y+i+1][x-i-1] == '●':
+            board[y+i+1][x-i-1] = '○'
+        else:
+            break
+
+
+def lower_left_to_white(board, y, x):
+    if board[y+1][x-1] == '○':
         for i in range(x):
             if board[y+i+1][x-i-1] == '●':
-                board[y+i+1][x-i-1] = '○'
+                ll_to_white(board, y, x)
             else:
-                break
-    elif board[y][x-1] == '●':                  # 左の反転
+                pass
+
+
+def ll_to_white(board, y, x):
+    for i in range(x):
+        if board[y+i+1][y-i-1] == '○':
+            board[y+i+1][y-i-1] == '●'
+        else:
+            break
+
+
+def left_to_black(board, y, x):
+    if board[y][x-1] == '●':
+        for i in range(x):
+            if board[y][x-i-1] == '○':
+                le_to_black(board, y, x)
+            else:
+                pass
+
+
+def le_to_black(board, y, x):
+    for i in range(x):
+        if board[y][x-i-1] == '●':
+            board[y][x-i-1] = '○'
+        else:
+            break
+
+
+def left_to_white(board, y, x):
+    if board[y][x-1] == '○':
         for i in range(x):
             if board[y][x-i-1] == '●':
-                board[y][x-i-1] = '○'
+                le_to_white(board, y, x)
             else:
-                break
-    elif board[y-1][x-1] == '●':                # 左上の反転
-        for i in range(y):
+                pass
+
+
+def le_to_white(board, y, x):
+    for i in range(x):
+        if board[y][x-i-1] == '○':
+            board[y][x-i-1] == '●'
+        else:
+            break
+
+
+def upper_left_to_black(board, y, x):
+    if board[y-1][x-1] == '●':
+        for i in range(x):
+            if board[y-i-1][x-i-1] == '○':
+                ul_to_black(board, y, x,)
+            else:
+                pass
+
+
+def ul_to_black(board, y, x):
+    for i in range(x):
+        if board[y-i-1][x-i-1] == '●':
+            board[y-i-1][x-i-1] = '○'
+        else:
+            break
+
+
+def upper_left_to_white(board, y, x):
+    if board[y-1][x-1] == '○':
+        for i in range(x):
             if board[y-i-1][x-i-1] == '●':
                 board[y-i-1][x-i-1] = '○'
             else:
-                break
-    else:
-        print('何かが起きている')
+                pass
 
 
-# 黒石を白石に反転
-def black_to_white(board, y, x):
-    if board[y-1][x] == '○':                    # 上の反転
-        for i in range(x):
-            if board[y-i-1][x] == '○':
-                board[y-i-1][x] = '●'
-            else:                               # '○'に到達
-                break
-    elif board[y-1][x+1] == '○':                # 右上の反転
-        for i in range(y):
-            if board[y-i-1][x+i+1] == '○':
-                board[y-i-1][x+i+1] = '●'
-            else:
-                break
-    elif board[y][x+1] == '○':                  # 右の反転
-        for i in range(7-x):
-            if board[y][x+i+1] == '○':
-                board[y][x+i+1] = '●'
-            else:
-                break
-    elif board[y+1][x+1] == '○':                # 右下の反転
-        for i in range(7-x):
-            if board[y+i+1][x+i+1] == '○':
-                board[y+i+1][x+i+1] = '●'
-            else:
-                break
-    elif board[y+1][x] == '○':                  # 下の反転
-        for i in range(7-y):
-            if board[y+i+1][x] == '○':
-                board[y+i+1][x] = '●'
-            else:
-                break
-    elif board[y+1][x-1] == '○':                # 左下の反転
-        for i in range(x):
-            if board[y+i+1][x-i-1] == '○':
-                board[y+i+1][x-i-1] = '●'
-            else:
-                break
-    elif board[y][x-1] == '○':                  # 左の反転
-        for i in range(x):
-            if board[y][x-i-1] == '○':
-                board[y][x-i-1] = '●'
-            else:
-                break
-    elif board[y-1][x-1] == '○':                # 左上の反転
-        for i in range(y):
-            if board[y-i-1][x-i-1] == '○':
-                board[y-i-1][x-i-1] = '●'
-            else:
-                break
-    else:
-        print('何かが起きている')
+def ul_to_white(board, y, x):
+    for i in range(x):
+        if board[y-i-1][x-i-1] == '○':
+            board[y-i-1][x-i-1]
+        else:
+            break
+
+
+def to_black(board, y, x):
+    upper_to_black(board, y, x)
+    upper_right_to_black(board, y, x)
+    right_to_black(board, y, x)
+    lower_right_to_black(board, y, x)
+    lower_to_black(board, y, x)
+    lower_left_to_white(board, y, x)
+    left_to_black(board, y, x)
+    upper_left_to_white(board, y, x)
+
+
+def to_white(board, y, x):
+    upper_to_white(board, y, x)
+    upper_right_to_white(board, y, x)
+    right_to_white(board, y, x)
+    lower_right_to_white(board, y, x)
+    lower_to_white(board, y, x)
+    lower_left_to_white(board, y, x)
+    left_to_white(board, y, x)
+    upper_left_to_white(board, y, x)
 
 
 def main():
@@ -449,6 +638,7 @@ def main():
         board_rc.append(['-', '-', '-', '-', '-', '-', '-', '-',])
     initial_position(board=board_rc)
     print("Turn: Black")
+    show_board(board=board_rc)
     by = int(by_input())
     bx = int(bx_input())
     if judge_vacant(board=board_rc, y=by, x=bx) is True:
@@ -461,11 +651,12 @@ def main():
               black_left(board=board_rc, y=by, x=bx) or\
               black_upper_left(board=board_rc, y=by, x=bx) is True:
             black(board=board_rc, y=by, x=bx)
+            to_black(board=board_rc, y=by, x=bx)
         else:
             print('置けません')
+            return int(by_input()), int(bx_input())
     else:
         print('空いていません')
-    white_to_black(board=board_rc, y=by, x=bx)
     show_board(board=board_rc)
     print('Turn: White')
     wy = int(wy_input())
@@ -480,11 +671,11 @@ def main():
               white_left(board_rc, wy, wx) or\
               white_upper_left(board_rc, wy, wx) is True:
             white(board=board_rc, y=wy, x=wx)
+            to_white(board=board_rc, y=wy, x=wx)
         else:
             print('置けません')
     else:
         print('空いていません')
-    black_to_white(board=board_rc, y=wy, x=wx)
     show_board(board=board_rc)
 
 
