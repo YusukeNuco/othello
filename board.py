@@ -1273,50 +1273,61 @@ def to_white(board, y, x):
     upper_left_to_white(board, y, x)
 
 
+def is_full(board):
+    for row in board:
+        for cell in row:
+            if cell == '-':
+                return False
+    return True
+
+
 def main():
     board_rc = []
     for _ in range(8):
         board_rc.append(['-', '-', '-', '-', '-', '-', '-', '-',])
     initial_position(board=board_rc)
-    print("Turn: Black")
-    show_board(board=board_rc)
-    by = int(by_input())
-    bx = int(bx_input())
-    if judge_vacant(board=board_rc, y=by, x=bx) is True:
-        if black_upper(board=board_rc, y=by, x=bx) or\
-              black_upper_right(board=board_rc, y=by, x=bx) or\
-              black_right(board=board_rc, y=by, x=bx) or\
-              black_lower_right(board=board_rc, y=by, x=bx) or\
-              black_lower(board=board_rc, y=by, x=bx) or\
-              black_lower_left(board=board_rc, y=by, x=bx) or\
-              black_left(board=board_rc, y=by, x=bx) or\
-              black_upper_left(board=board_rc, y=by, x=bx) is True:
-            black(board=board_rc, y=by, x=bx)
-            to_black(board=board_rc, y=by, x=bx)
+    while not is_full(board_rc):
+        print("Turn: Black")
+        show_board(board=board_rc)
+        by = int(by_input())
+        bx = int(bx_input())
+        if judge_vacant(board=board_rc, y=by, x=bx) is True:
+            if black_upper(board=board_rc, y=by, x=bx) or\
+               black_upper_right(board=board_rc, y=by, x=bx) or\
+               black_right(board=board_rc, y=by, x=bx) or\
+               black_lower_right(board=board_rc, y=by, x=bx) or\
+               black_lower(board=board_rc, y=by, x=bx) or\
+               black_lower_left(board=board_rc, y=by, x=bx) or\
+               black_left(board=board_rc, y=by, x=bx) or\
+               black_upper_left(board=board_rc, y=by, x=bx) is True:
+                black(board=board_rc, y=by, x=bx)
+                to_black(board=board_rc, y=by, x=bx)
+            else:
+                print('置けません')
         else:
-            print('置けません')
-    else:
-        print('空いていません')
-    show_board(board=board_rc)
-    print('Turn: White')
-    wy = int(wy_input())
-    wx = int(wy_input())
-    if judge_vacant(board=board_rc, y=wy, x=wx) is True:
-        if white_upper(board=board_rc, y=wy, x=wx) or\
-              white_upper_right(board_rc, wy, wx) or\
-              white_right(board_rc, wy, wx) or\
-              white_lower_right(board_rc, wy, wx) or\
-              white_lower(board_rc, wy, wx) or\
-              white_lower_left(board_rc, wy, wx) or\
-              white_left(board_rc, wy, wx) or\
-              white_upper_left(board_rc, wy, wx) is True:
-            white(board=board_rc, y=wy, x=wx)
-            to_white(board=board_rc, y=wy, x=wx)
+            print('空いていません')
+        show_board(board=board_rc)
+        print('Turn: White')
+        wy = int(wy_input())
+        wx = int(wy_input())
+        if judge_vacant(board=board_rc, y=wy, x=wx) is True:
+            if white_upper(board=board_rc, y=wy, x=wx) or\
+               white_upper_right(board_rc, wy, wx) or\
+               white_right(board_rc, wy, wx) or\
+               white_lower_right(board_rc, wy, wx) or\
+               white_lower(board_rc, wy, wx) or\
+               white_lower_left(board_rc, wy, wx) or\
+               white_left(board_rc, wy, wx) or\
+               white_upper_left(board_rc, wy, wx) is True:
+                white(board=board_rc, y=wy, x=wx)
+                to_white(board=board_rc, y=wy, x=wx)
+            else:
+                print('置けません')
         else:
-            print('置けません')
+            print('空いていません')
+        show_board(board=board_rc)
     else:
-        print('空いていません')
-    show_board(board=board_rc)
+        judgement(board=board_rc)
 
 
 if __name__ == '__main__':
