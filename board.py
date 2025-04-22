@@ -336,7 +336,7 @@ def judge_vacant(board, y, x):
 
 
 # 上反転
-def upper_to_black(board, y, x):                # 上探索
+def upper_to_black(board, y, x):
     if board[y-1][x] == '●':
         for i in range(y):
             if board[y-i-1][x] == '○':
@@ -345,7 +345,7 @@ def upper_to_black(board, y, x):                # 上探索
                 pass
 
 
-def u_to_black(board, y, x):                      # 上反転
+def u_to_black(board, y, x):
     for i in range(y):
         if board[y-i-1][x] == '●':
             board[y-i-1][x] = '○'
@@ -370,15 +370,7 @@ def u_to_white(board, y, x):
             break
 
 
-# # 右上反転
-# def upper_right_to_black(board, y, x):
-#     if board[y-1][x+1] == '●':
-#         for i in range(7-x):
-#             if board[y-i-1][x+i+1] == '○':
-#                 ur_to_black(board, y, x)
-#             else:
-#                 pass
-
+# 右上反転
 def upper_right_to_black(board, y, x):
     if board[y-1][x+1] == '●':
         if 6 <= x:
@@ -467,14 +459,6 @@ def ur_to_black(board, y, x):
         else:
             break
 
-
-# def upper_right_to_white(board, y, x):
-#     if board[y-1][x+1] == '○':
-#         for i in range(7-x):
-#             if board[y-i-1][x+i+1] == '●':
-#                 ur_to_white(board, y, x)
-#             else:
-#                 pass
 
 def upper_right_to_white(board, y, x):
     if board[y-1][x+1] == '○':
@@ -600,15 +584,7 @@ def r_to_white(board, y, x):
             break
 
 
-# def lower_right_to_black(board, y, x):
-#     if board[y+1][x+1] == '●':
-#         for i in range(7-x):
-#             if board[y+i+1][x+i+1] == '○':
-#                 lr_to_black(board, y, x)
-#             else:
-#                 pass
-
-
+# 右下反転
 def lower_right_to_black(board, y, x):
     if board[y+1][x+1] == '●':
         if 6 <= x:
@@ -697,14 +673,6 @@ def lr_to_black(board, y, x):
         else:
             break
 
-
-# def lower_right_to_white(board, y, x):
-#     if board[y+1][x+1] == '○':
-#         for i in range(7-x):
-#             if board[y+i+1][x+i+1] == '●':
-#                 lr_to_white(board, y, x)
-#             else:
-#                 pass
 
 def lower_right_to_white(board, y, x):
     if board[y+1][x+1] == '○':
@@ -795,6 +763,7 @@ def lr_to_white(board, y, x):
             break
 
 
+# 下反転
 def lower_to_black(board, y, x):
     if board[y+1][x] == '●':
         for i in range(7-y):
@@ -829,15 +798,7 @@ def l_to_white(board, y, x):
             break
 
 
-# def lower_left_to_black(board, y, x):
-#     if board[y+1][x-1] == '●':
-#         for i in range(x):
-#             if board[y+i+1][x-i-1] == '○':
-#                 ll_to_black(board, y, x)
-#             else:
-#                 pass
-
-
+# 左下反転
 def lower_left_to_black(board, y, x):
     if board[y+1][x-1] == '●':
         if x <= 1:
@@ -927,15 +888,6 @@ def ll_to_black(board, y, x):
             break
 
 
-# def lower_left_to_white(board, y, x):
-#     if board[y+1][x-1] == '○':
-#         for i in range(x):
-#             if board[y+i+1][x-i-1] == '●':
-#                 ll_to_white(board, y, x)
-#             else:
-#                 pass
-
-
 def lower_left_to_white(board, y, x):
     if board[y+1][x-1] == '○':
         if x <= 1:
@@ -1022,6 +974,7 @@ def ll_to_white(board, y, x):
             break
 
 
+# 左反転
 def left_to_black(board, y, x):
     if board[y][x-1] == '●':
         for i in range(x):
@@ -1056,15 +1009,7 @@ def le_to_white(board, y, x):
             break
 
 
-# def upper_left_to_black(board, y, x):
-#     if board[y-1][x-1] == '●':
-#         for i in range(x):
-#             if board[y-i-1][x-i-1] == '○':
-#                 ul_to_black(board, y, x,)
-#             else:
-#                 pass
-
-
+# 左上反転
 def upper_left_to_black(board, y, x):
     if board[y-1][x-1] == '●':
         if x <= 1:
@@ -1153,14 +1098,6 @@ def ul_to_black(board, y, x):
         else:
             break
 
-
-# def upper_left_to_white(board, y, x):
-#     if board[y-1][x-1] == '○':
-#         for i in range(x):
-#             if board[y-i-1][x-i-1] == '●':
-#                 board[y-i-1][x-i-1] = '○'
-#             else:
-#                 pass
 
 def upper_left_to_white(board, y, x):
     if board[y-1][x-1] == '○':
@@ -1251,6 +1188,37 @@ def ul_to_white(board, y, x):
             break
 
 
+# 入力座標に対する黒石の置き位置を判定し、Trueなら置く
+def black_place(board, x, y):
+    if black_upper(board, y, x) or\
+       black_upper_right(board, y, x) or\
+       black_right(board, y, x) or\
+       black_lower_right(board, y, x) or\
+       black_lower(board, y, x) or\
+       black_lower_left(board, y, x) or\
+       black_left(board, y, x) or\
+       black_upper_left(board, y, x) is True:
+        black(board, y, x)
+    else:
+        print('置けません')
+
+
+# 入力座標に対する白石の置き位置を判定し、Trueなら置く
+def white_place(board, x, y):
+    if white_upper(board, y, x) or\
+       white_upper_right(board, y, x) or\
+       white_right(board, y, x) or\
+       white_lower_right(board, y, x) or\
+       white_lower(board, y, x) or\
+       white_lower_left(board, y, x) or\
+       white_left(board, y, x) or\
+       white_upper_left(board, y, x) is True:
+        white(board, y, x)
+    else:
+        print('置けません')
+
+
+# 白石を黒石に反転
 def to_black(board, y, x):
     upper_to_black(board, y, x)
     upper_right_to_black(board, y, x)
@@ -1262,6 +1230,7 @@ def to_black(board, y, x):
     upper_left_to_white(board, y, x)
 
 
+# 黒石を白石に反転
 def to_white(board, y, x):
     upper_to_white(board, y, x)
     upper_right_to_white(board, y, x)
@@ -1273,6 +1242,7 @@ def to_white(board, y, x):
     upper_left_to_white(board, y, x)
 
 
+# 空きマスが残っているか判定(残っていたらFalse)
 def is_full(board):
     for row in board:
         for cell in row:
@@ -1285,47 +1255,27 @@ def main():
     board_rc = []
     for _ in range(8):
         board_rc.append(['-', '-', '-', '-', '-', '-', '-', '-',])
-    initial_position(board=board_rc)
+    initial_position(board_rc)
     while not is_full(board_rc):
         print("Turn: Black")
-        show_board(board=board_rc)
+        show_board(board_rc)
         by = int(by_input())
         bx = int(bx_input())
         if judge_vacant(board=board_rc, y=by, x=bx) is True:
-            if black_upper(board=board_rc, y=by, x=bx) or\
-               black_upper_right(board=board_rc, y=by, x=bx) or\
-               black_right(board=board_rc, y=by, x=bx) or\
-               black_lower_right(board=board_rc, y=by, x=bx) or\
-               black_lower(board=board_rc, y=by, x=bx) or\
-               black_lower_left(board=board_rc, y=by, x=bx) or\
-               black_left(board=board_rc, y=by, x=bx) or\
-               black_upper_left(board=board_rc, y=by, x=bx) is True:
-                black(board=board_rc, y=by, x=bx)
-                to_black(board=board_rc, y=by, x=bx)
-            else:
-                print('置けません')
+            black_place(board=board_rc, y=by, x=bx)
+            to_black(board=board_rc, y=by, x=bx)
         else:
             print('空いていません')
-        show_board(board=board_rc)
+        show_board(board_rc)
         print('Turn: White')
         wy = int(wy_input())
         wx = int(wy_input())
-        if judge_vacant(board=board_rc, y=wy, x=wx) is True:
-            if white_upper(board=board_rc, y=wy, x=wx) or\
-               white_upper_right(board_rc, wy, wx) or\
-               white_right(board_rc, wy, wx) or\
-               white_lower_right(board_rc, wy, wx) or\
-               white_lower(board_rc, wy, wx) or\
-               white_lower_left(board_rc, wy, wx) or\
-               white_left(board_rc, wy, wx) or\
-               white_upper_left(board_rc, wy, wx) is True:
-                white(board=board_rc, y=wy, x=wx)
-                to_white(board=board_rc, y=wy, x=wx)
-            else:
-                print('置けません')
+        if judge_vacant(board_rc, wy, wx) is True:
+            white_place(board_rc, wy, wx)
+            to_white(board_rc, wy, wx)
         else:
             print('空いていません')
-        show_board(board=board_rc)
+        show_board(board_rc)
     else:
         judgement(board=board_rc)
 
