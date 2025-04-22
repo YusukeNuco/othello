@@ -1,45 +1,40 @@
-import random
+import board_2
+import input_cordinate
+import judge_black_position
+import judge_white_position
+import place
+import to_black
+import to_white
 
-# 座標が空きマスか判定
-def judge_vacant(board, y, x):
-    if board[y][x] != '-':
-        return False
+
+def main():
+    board_rc = []
+    for _ in range(8):
+        board_rc.append(['-', '-', '-', '-', '-', '-', '-', '-',])
+    board_2.initial_position(board_rc)
+    while not board_2.is_full(board_rc):
+        print("Turn: Black")
+        board_2.show_board(board_rc)
+        by = int(input_cordinate.by_input())
+        bx = int(input_cordinate.bx_input())
+        if judge_black_position.judge_vacant(board=board_rc, y=by, x=bx) is True:
+            place.black_place(board=board_rc, y=by, x=bx)
+            to_black.to_black(board=board_rc, y=by, x=bx)
+        else:
+            print('空いていません')
+        board_2.show_board(board_rc)
+        print('Turn: White')
+        wy = int(input_cordinate.wy_input())
+        wx = int(input_cordinate.wx_input())
+        if judge_white_position.judge_vacant(board_rc, wy, wx) is True:
+            place.white_place(board_rc, wy, wx)
+            to_white.to_white(board_rc, wy, wx)
+        else:
+            print('空いていません')
+        board_2.show_board(board_rc)
     else:
-        return True
+        board_2.judgement(board=board_rc)
 
 
-# 白石の置き位置を判定し、Trueなら敵の選択肢に追加
-def enemy_place(board, x, y):
-    if white_upper(board, y, x) or\
-       white_upper_right(board, y, x) or\
-       white_right(board, y, x) or\
-       white_lower_right(board, y, x) or\
-       white_lower(board, y, x) or\
-       white_lower_left(board, y, x) or\
-       white_left(board, y, x) or\
-       white_upper_left(board, y, x) is True:
-        enemy_choices.append([x, y])
-
-
-lis_1 = [i for i in range(8)]
-lis_2 = [i for i in range(8)]
-cordinate_lis = []
-for j in lis_1:
-    for k in lis_2:
-        cordinate_lis.append([j, k])
-        print(cordinate_lis)
-
-
-enemy_choices = []
-for cordinate in cordinate_lis:
-    yc = cordinate[1]
-    xc = cordinate[0]
-    if judge_vacant(board_rc, yc, xc) is True:
-        enemy_place(board_rc, yc, xc)
-
-enemy_choice = random.choice(enemy_choices)
-ey = enemy_choice[1]
-ex = enemy_choice[0]
-
-white(board_rc_ ey, ex)
-
+if __name__ == '__main__':
+    main()

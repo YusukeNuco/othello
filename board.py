@@ -1225,9 +1225,9 @@ def to_black(board, y, x):
     right_to_black(board, y, x)
     lower_right_to_black(board, y, x)
     lower_to_black(board, y, x)
-    lower_left_to_white(board, y, x)
+    lower_left_to_black(board, y, x)
     left_to_black(board, y, x)
-    upper_left_to_white(board, y, x)
+    upper_left_to_black(board, y, x)
 
 
 # 黒石を白石に反転
@@ -1269,7 +1269,7 @@ def main():
         show_board(board_rc)
         print('Turn: White')
         wy = int(wy_input())
-        wx = int(wy_input())
+        wx = int(wx_input())
         if judge_vacant(board_rc, wy, wx) is True:
             white_place(board_rc, wy, wx)
             to_white(board_rc, wy, wx)
