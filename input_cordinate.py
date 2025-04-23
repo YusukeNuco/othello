@@ -25,7 +25,7 @@ def wy_input():
         return white_y
     else:
         print('座標は0-7で入力してください')
-        return wy_input
+        return wy_input()
 
 
 # 白石のX座標入力

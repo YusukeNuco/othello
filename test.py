@@ -1,4 +1,4 @@
-import board_2
+import board
 import input_cordinate
 import judge_black_position
 import judge_white_position
@@ -7,14 +7,31 @@ import to_black
 import to_white
 
 
+def retry():
+    pass
+
+
+# def black_turn():
+#     print("Turn: Black")
+#     board.show_board(board_rc)
+#     by = int(input_cordinate.by_input())
+#     bx = int(input_cordinate.bx_input())
+#     if judge_black_position.judge_vacant(board=board_rc, y=by, x=bx):
+#         place.black_place(board=board_rc, y=by, x=bx)
+#         to_black.to_black(board=board_rc, y=by, x=bx)
+#     else:
+#         print('空いていません')
+#         return black_turn()
+
+
 def main():
     board_rc = []
     for _ in range(8):
         board_rc.append(['-', '-', '-', '-', '-', '-', '-', '-',])
-    board_2.initial_position(board_rc)
-    while not board_2.is_full(board_rc):
+    board.initial_position(board_rc)
+    while not board.is_full(board_rc):
         print("Turn: Black")
-        board_2.show_board(board_rc)
+        board.show_board(board_rc)
         by = int(input_cordinate.by_input())
         bx = int(input_cordinate.bx_input())
         if judge_black_position.judge_vacant(board=board_rc, y=by, x=bx):
@@ -22,7 +39,7 @@ def main():
             to_black.to_black(board=board_rc, y=by, x=bx)
         else:
             print('空いていません')
-        board_2.show_board(board_rc)
+        board.show_board(board_rc)
         print('Turn: White')
         wy = int(input_cordinate.wy_input())
         wx = int(input_cordinate.wx_input())
@@ -31,9 +48,9 @@ def main():
             to_white.to_white(board_rc, wy, wx)
         else:
             print('空いていません')
-        board_2.show_board(board_rc)
+        board.show_board(board_rc)
     else:
-        board_2.judgement(board=board_rc)
+        board.judgement(board=board_rc)
 
 
 if __name__ == '__main__':

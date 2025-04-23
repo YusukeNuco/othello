@@ -1,4 +1,4 @@
-import board_2
+import board
 
 
 # 斜めの判定だけ gap を場合分けしないと IndexError になる。
@@ -19,8 +19,8 @@ def create_bord():
     board_rc = []
     for i in range(8):
         board_rc.append(['-', '-', '-', '-', '-', '-', '-', '-'])
-    board_2.initial_position(board_rc)
-    board_2.show_board(board_rc)
+    board.initial_position(board_rc)
+    board.show_board(board_rc)
 
 
 def create_board_2():
@@ -30,10 +30,34 @@ def create_board_2():
     board_rc_2 = []
     for i in range(8):
         board_rc_2.append(row)
-    board_2.initial_position(board_rc_2)
-    board_2.show_board(board_rc_2)
+    board.initial_position(board_rc_2)
+    board.show_board(board_rc_2)
 
 
 create_bord()
 print('\t')
 create_board_2()
+
+
+# Turn: Black
+# - - - - - - - -
+# - - - - - - - -
+# - - - - - - - -
+# - - - ● ○ - - -
+# - - - ● ○ - - -
+# - - ○ ● ○ - - -
+# - - - ● - - - -
+# - - - - - - - -
+# Y座標を入力してください: 7
+# X座標を入力してください: 2
+# Traceback (most recent call last):
+#   File "/Users/kikuchiyusuke/work/othello/test.py", line 40, in <module>
+#     main()
+#   File "/Users/kikuchiyusuke/work/othello/test.py", line 22, in main
+#     to_black.to_black(board=board_rc, y=by, x=bx)
+#   File "/Users/kikuchiyusuke/work/othello/to_black.py", line 440, in to_black
+#     lower_right_to_black(board, y, x)
+#   File "/Users/kikuchiyusuke/work/othello/to_black.py", line 130, in lower_right_to_black
+#     if board[y+1][x+1] == '●':
+#        ~~~~~^^^^^
+# IndexError: list index out of range

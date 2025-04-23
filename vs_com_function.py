@@ -1,4 +1,3 @@
-import random
 import judge_white_position
 
 
@@ -43,10 +42,6 @@ def enemy_choices():
                judge_white_position.white_upper_left(board_rc, yc, xc) is True:
                 enemy_choices.append([xc, yc])
     return enemy_choices
-
-
-# 選択肢から無作為に座標を1つ抽出
-enemy_choice = random.choice(enemy_choices())
 
 
 # 敵が石を置く

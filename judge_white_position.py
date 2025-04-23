@@ -8,127 +8,151 @@ def judge_vacant(board, y, x):
 
 # 上探索
 def white_upper(board, y, x):
-    gap = y
-    if board[y-1][x] != '○':
-        return False
+    if y != 0:
+        gap = y
+        if board[y-1][x] != '○':
+            return False
+        else:
+            for i in range(gap):
+                if board[y-i-1][x] == '●':
+                    return True
+                    break
+                elif board[y-i-1][x] == '-':
+                    return False
+                else:
+                    continue
     else:
-        for i in range(gap):
-            if board[y-i-1][x] == '●':
-                return True
-                break
-            elif board[y-i-1][x] == '-':
-                return False
-            else:
-                continue
+        pass
 
 
 # 右上探索
 def white_upper_right(board, y, x):
-    gap = y
-    if board[y-1][x+1] != '○':
-        return False
+    if y != 0 and x != 7:
+        gap = y
+        if board[y-1][x+1] != '○':
+            return False
+        else:
+            for i in range(gap):
+                if board[y-i-1][x+i+1] == '●':
+                    return True
+                    break
+                elif board[y-i-1][x+i+1] == '-':
+                    return False
+                else:
+                    continue
     else:
-        for i in range(gap):
-            if board[y-i-1][x+i+1] == '●':
-                return True
-                break
-            elif board[y-i-1][x+i+1] == '-':
-                return False
-            else:
-                continue
+        pass
 
 
 # 右探索
 def white_right(board, y, x):
-    gap = 7-x
-    if board[y][x+1] != '○':
-        return False
+    if x != 7:
+        gap = 7-x
+        if board[y][x+1] != '○':
+            return False
+        else:
+            for i in range(gap):
+                if board[y][y+i+1] == '●':
+                    return True
+                    break
+                elif board[y][x+i+1] == '-':
+                    return False
+                else:
+                    continue
     else:
-        for i in range(gap):
-            if board[y][y+i*1] == '●':
-                return True
-                break
-            elif board[y][x+i+1] == '-':
-                return False
-            else:
-                continue
+        pass
 
 
 # 右下探索
 def white_lower_right(board, y, x):
-    gap = 7-x
-    if board[y+1][x+1] != '○':
-        return False
+    if y != 7 and x != 7:
+        gap = 7-x
+        if board[y+1][x+1] != '○':
+            return False
+        else:
+            for i in range(gap):
+                if board[y+i+1][x+i+1] == '●':
+                    return True
+                    break
+                elif board[y+i+1][x+i+1] == '-':
+                    return False
+                else:
+                    continue
     else:
-        for i in range(gap):
-            if board[y+i+1][x+i+1] == '●':
-                return True
-                break
-            elif board[y+i+1][x+i+1] == '-':
-                return False
-            else:
-                continue
+        pass
 
 
 # 下探索
 def white_lower(board, y, x):
-    gap = 7-y
-    if board[y+1][x] != '○':
-        return False
+    if y != 7:
+        gap = 7-y
+        if board[y+1][x] != '○':
+            return False
+        else:
+            for i in range(gap):
+                if board[y+i+1][x] == '●':
+                    return True
+                    break
+                elif board[y+i+1][x] == '-':
+                    return False
+                else:
+                    continue
     else:
-        for i in range(gap):
-            if board[y+i+1][x] == '●':
-                return True
-                break
-            elif board[y+i+1][x] == '-':
-                return False
-            else:
-                continue
+        pass
 
 
 # 左下探索
 def white_lower_left(board, y, x):
-    gap = x
-    if board[y+1][x-1] != '○':
-        return False
+    if y != 7 and x != 0:
+        gap = x
+        if board[y+1][x-1] != '○':
+            return False
+        else:
+            for i in range(gap):
+                if board[y+i+1][x-i-1] == '●':
+                    return True
+                    break
+                elif board[y+i+1][x-i-1] == '-':
+                    return False
+                else:
+                    continue
     else:
-        for i in range(gap):
-            if board[y+i+1][x-i-1] == '●':
-                return True
-                break
-            elif board[y+i+1][x-i-1] == '-':
-                return False
-            else:
-                continue
+        pass
 
 
 # 左探索
 def white_left(board, y, x):
-    gap = x
-    if board[y][x-1] != '○':
-        return False
+    if x != 0:
+        gap = x
+        if board[y][x-1] != '○':
+            return False
+        else:
+            for i in range(gap):
+                if board[y][x-i-1] == '●':
+                    return True
+                    break
+                elif board[y][x-i-1] == '-':
+                    return False
+                else:
+                    continue
     else:
-        for i in range(gap):
-            if board[y][x-i-1] == '●':
-                return True
-                break
-            elif board[y][x-i-1] == '-':
-                return False
-            else:
-                continue
+        pass
 
 
 # 左上探索
 def white_upper_left(board, y, x):
-    gap = x
-    if board[y-1][x-1] != '○':
-        return False
+    if y != 0 and x != 0:
+        gap = x
+        if board[y-1][x-1] != '○':
+            return False
+        else:
+            for i in range(gap):
+                if board[y-i-1][x-i-1] == '●':
+                    return True
+                    break
+                elif board[y-i-1][x-i-1] == '-':
+                    return False
+                else:
+                    continue
     else:
-        for i in range(gap):
-            if board[y-i-1][x-i-1] == '●':
-                return True
-                break
-            elif board[y-i-1][x-i-1] == '-':
-                return False
-            else:
-                continue
+        pass
