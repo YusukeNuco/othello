@@ -37,27 +37,3 @@ def create_board_2():
 create_bord()
 print('\t')
 create_board_2()
-
-
-# Turn: Black
-# - - - - - - - -
-# - - - - - - - -
-# - - - - - - - -
-# - - - ● ○ - - -
-# - - - ● ○ - - -
-# - - ○ ● ○ - - -
-# - - - ● - - - -
-# - - - - - - - -
-# Y座標を入力してください: 7
-# X座標を入力してください: 2
-# Traceback (most recent call last):
-#   File "/Users/kikuchiyusuke/work/othello/test.py", line 40, in <module>
-#     main()
-#   File "/Users/kikuchiyusuke/work/othello/test.py", line 22, in main
-#     to_black.to_black(board=board_rc, y=by, x=bx)
-#   File "/Users/kikuchiyusuke/work/othello/to_black.py", line 440, in to_black
-#     lower_right_to_black(board, y, x)
-#   File "/Users/kikuchiyusuke/work/othello/to_black.py", line 130, in lower_right_to_black
-#     if board[y+1][x+1] == '●':
-#        ~~~~~^^^^^
-# IndexError: list index out of range
