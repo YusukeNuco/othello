@@ -1,10 +1,4 @@
-lis = [0, 1, 2]
-
-for j in lis:
-    print(j)
-
-for k in lis:
-    print(lis)
+import board_2
 
 
 # 斜めの判定だけ gap を場合分けしないと IndexError になる。
@@ -21,7 +15,25 @@ for k in lis:
 # xとyの壁に近いほうと、壁との差分を探索。同値の場合はどっちでもいい。
 
 
-# 石を置ける位置[x, y]のリストを作る
-# そのリストを作る
-# リストのリストのインデックス番号をランダムに選択してもらう
-# ランダムに選択されたインデックス番号の[x, y]座標に石を置く
+def create_bord():
+    board_rc = []
+    for i in range(8):
+        board_rc.append(['-', '-', '-', '-', '-', '-', '-', '-'])
+    board_2.initial_position(board_rc)
+    board_2.show_board(board_rc)
+
+
+def create_board_2():
+    row = []
+    for i in range(8):
+        row.append('-')
+    board_rc_2 = []
+    for i in range(8):
+        board_rc_2.append(row)
+    board_2.initial_position(board_rc_2)
+    board_2.show_board(board_rc_2)
+
+
+create_bord()
+print('\t')
+create_board_2()

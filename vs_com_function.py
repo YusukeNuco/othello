@@ -1,4 +1,11 @@
 import random
+import judge_white_position
+
+
+board_rc = []
+for _ in range(8):
+    board_rc.append(['-', '-', '-', '-', '-', '-', '-', '-',])
+
 
 # 座標が空きマスか判定
 def judge_vacant(board, y, x):
@@ -8,37 +15,40 @@ def judge_vacant(board, y, x):
         return True
 
 
-# 白石の置き位置を判定し、Trueなら敵の選択肢に追加
-def enemy_place(board, x, y):
-    if white_upper(board, y, x) or\
-       white_upper_right(board, y, x) or\
-       white_right(board, y, x) or\
-       white_lower_right(board, y, x) or\
-       white_lower(board, y, x) or\
-       white_lower_left(board, y, x) or\
-       white_left(board, y, x) or\
-       white_upper_left(board, y, x) is True:
-        enemy_choices.append([x, y])
+# 64の座標全てのリスト
+def all_cordinates():
+    lis_1 = [i for i in range(8)]
+    lis_2 = [i for i in range(8)]
+    cordinate_lis = []
+    for j in lis_1:
+        for k in lis_2:
+            cordinate_lis.append([j, k])
+    return cordinate_lis
 
 
-lis_1 = [i for i in range(8)]
-lis_2 = [i for i in range(8)]
-cordinate_lis = []
-for j in lis_1:
-    for k in lis_2:
-        cordinate_lis.append([j, k])
-        print(cordinate_lis)
+# 全ての座標のうち、敵(白)が石を置ける座標のリスト == 敵の選択肢
+def enemy_choices():
+    enemy_choices = []
+    for cordinate in all_cordinates():
+        yc = cordinate[1]
+        xc = cordinate[0]
+        if judge_vacant(board_rc, yc, xc):
+            if judge_white_position.white_upper(board_rc, yc, xc) or\
+               judge_white_position.white_upper_right(board_rc, yc, xc) or\
+               judge_white_position.white_right(board_rc, yc, xc) or\
+               judge_white_position.white_lower_right(board_rc, yc, xc) or\
+               judge_white_position.white_lower(board_rc, yc, xc) or\
+               judge_white_position.white_lower_left(board_rc, yc, xc) or\
+               judge_white_position.white_left(board_rc, yc, xc) or\
+               judge_white_position.white_upper_left(board_rc, yc, xc) is True:
+                enemy_choices.append([xc, yc])
+    return enemy_choices
 
 
-enemy_choices = []
-for cordinate in cordinate_lis:
-    yc = cordinate[1]
-    xc = cordinate[0]
-    if judge_vacant(board_rc, yc, xc) is True:
-        enemy_place(board_rc, yc, xc)
+# 選択肢から無作為に座標を1つ抽出
+enemy_choice = random.choice(enemy_choices())
 
-enemy_choice = random.choice(enemy_choices)
-ey = enemy_choice[1]
-ex = enemy_choice[0]
 
-white(board_rc_ ey, ex)
+# 敵が石を置く
+def enemy_place(board, y, x):
+    board[y][x] = '●'

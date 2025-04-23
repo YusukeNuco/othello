@@ -1,4 +1,12 @@
-# 8 * 8 の盤面
+# 最初の盤面を作成
+def create_bord():
+    board_rc = []
+    for i in range(8):
+        board_rc.append(['-', '-', '-', '-', '-', '-', '-', '-'])
+    initial_position(board_rc)
+
+
+# 現在の盤面を表示
 def show_board(board: list[list[str]]):
     for row in board:
         print(*row)

@@ -1204,7 +1204,7 @@ def black_place(board, x, y):
 
 
 # 入力座標に対する白石の置き位置を判定し、Trueなら置く
-def white_place(board, x, y):
+def white_place(board, y, x):
     if white_upper(board, y, x) or\
        white_upper_right(board, y, x) or\
        white_right(board, y, x) or\
@@ -1261,7 +1261,7 @@ def main():
         show_board(board_rc)
         by = int(by_input())
         bx = int(bx_input())
-        if judge_vacant(board=board_rc, y=by, x=bx) is True:
+        if judge_vacant(board=board_rc, y=by, x=bx):
             black_place(board=board_rc, y=by, x=bx)
             to_black(board=board_rc, y=by, x=bx)
         else:
@@ -1270,7 +1270,7 @@ def main():
         print('Turn: White')
         wy = int(wy_input())
         wx = int(wx_input())
-        if judge_vacant(board_rc, wy, wx) is True:
+        if judge_vacant(board_rc, wy, wx):
             white_place(board_rc, wy, wx)
             to_white(board_rc, wy, wx)
         else:

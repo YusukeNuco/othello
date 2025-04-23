@@ -13,7 +13,7 @@ def white(board, y, x):
 
 
 # 入力座標に対する黒石の置き位置を判定し、Trueなら置く
-def black_place(board, x, y):
+def black_place(board, y, x):
     if judge_black_position.black_upper(board, y, x) or\
        judge_black_position.black_upper_right(board, y, x) or\
        judge_black_position.black_right(board, y, x) or\
@@ -28,7 +28,7 @@ def black_place(board, x, y):
 
 
 # 入力座標に対する白石の置き位置を判定し、Trueなら置く
-def white_place(board, x, y):
+def white_place(board, y, x):
     if judge_white_position.white_upper(board, y, x) or\
        judge_white_position.white_upper_right(board, y, x) or\
        judge_white_position.white_right(board, y, x) or\

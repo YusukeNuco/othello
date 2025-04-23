@@ -17,7 +17,7 @@ def main():
         board_2.show_board(board_rc)
         by = int(input_cordinate.by_input())
         bx = int(input_cordinate.bx_input())
-        if judge_black_position.judge_vacant(board=board_rc, y=by, x=bx) is True:
+        if judge_black_position.judge_vacant(board=board_rc, y=by, x=bx):
             place.black_place(board=board_rc, y=by, x=bx)
             to_black.to_black(board=board_rc, y=by, x=bx)
         else:
@@ -26,7 +26,7 @@ def main():
         print('Turn: White')
         wy = int(input_cordinate.wy_input())
         wx = int(input_cordinate.wx_input())
-        if judge_white_position.judge_vacant(board_rc, wy, wx) is True:
+        if judge_white_position.judge_vacant(board_rc, wy, wx):
             place.white_place(board_rc, wy, wx)
             to_white.to_white(board_rc, wy, wx)
         else:
