@@ -31,15 +31,103 @@ def white_upper_right(board, y, x):
         if board[y-1][x+1] != '○':
             return False
         else:
-            gap = y
-            for i in range(gap):
-                if board[y-i-1][x+i+1] == '●':
-                    return True
-                    break
-                elif board[y-i-1][x+i+1] == '-':
-                    return False
-                else:
-                    continue
+            if x == 5:
+                for i in range(2):
+                    if board[y-i-1][x+i+1] == '●':
+                        return True
+                        break
+                    elif board[y-i-1][x+i+1] == '-':
+                        return False
+                    else:
+                        continue
+            elif x == 4:
+                if y == 2:
+                    for i in range(2):
+                        if board[y-i-1][x+i+1] == '●':
+                            return True
+                            break
+                        elif board[y-i-1][x+i+1] == '-':
+                            return False
+                        else:
+                            continue
+                elif 2 < y:
+                    for i in range(3):
+                        if board[y-i-1][x+i+1] == '●':
+                            return True
+                            break
+                        elif board[y-i-1][x+i+1] == '-':
+                            return False
+                        else:
+                            continue
+            elif x == 3:
+                if 3 < y:
+                    for i in range(4):
+                        if board[y-i-1][x+i+1] == '●':
+                            return True
+                            break
+                        elif board[y-i-1][x+i+1] == '-':
+                            return False
+                        else:
+                            continue
+                elif y <= 3:
+                    for i in range(y):
+                        if board[y-i-1][x+i+1] == '●':
+                            return True
+                            break
+                        elif board[y-i-1][x+i+1] == '-':
+                            return False
+                        else:
+                            continue
+            elif x == 2:
+                if 4 < y:
+                    for i in range(5):
+                        if board[y-i-1][x+i+1] == '●':
+                            return True
+                            break
+                        elif board[y-i-1][x+i+1] == '-':
+                            return False
+                        else:
+                            continue
+                elif y <= 4:
+                    for i in range(y):
+                        if board[y-i-1][x+i+1] == '●':
+                            return True
+                            break
+                        elif board[y-i-1][x+i+1] == '-':
+                            return False
+                        else:
+                            continue
+            elif x == 1:
+                if 5 < y:
+                    for i in range(6):
+                        if board[y-i-1][x+i+1] == '●':
+                            return True
+                            break
+                        elif board[y-i-1][x+i+1] == '-':
+                            return False
+                        else:
+                            continue
+                elif y <= 5:
+                    for i in range(y):
+                        if board[y-i-1][x+i+1] == '●':
+                            return True
+                            break
+                        elif board[y-i-1][x+i+1] == '-':
+                            return False
+                        else:
+                            continue
+            elif x == 0:
+                for i in range(y):
+                    if board[y-i-1][x+i+1] == '●':
+                        return True
+                        break
+                    elif board[y-i-1][x+i+1] == '-':
+                        return False
+                    else:
+                        continue
+            else:
+                pass
+
     else:
         pass
 
@@ -52,7 +140,7 @@ def white_right(board, y, x):
             return False
         else:
             for i in range(gap):
-                if board[y][y+i+1] == '●':
+                if board[y][x+i+1] == '●':
                     return True
                     break
                 elif board[y][x+i+1] == '-':
@@ -196,7 +284,7 @@ def white_lower_left(board, y, x):
         else:
             if x == 2:
                 for i in range(2):
-                    if board[y+i+1][x-i-1] == '●:
+                    if board[y+i+1][x-i-1] == '●':
                         return True
                         break
                     elif board[y+i+1][x-i-1] == '-':
@@ -206,7 +294,7 @@ def white_lower_left(board, y, x):
             elif x == 3:
                 if y == 5:
                     for i in range(2):
-                        if board[y+i+1][x-i-1] == '●:
+                        if board[y+i+1][x-i-1] == '●':
                             return True
                             break
                         elif board[y+i+1][x-i-1] == '-':
@@ -215,7 +303,7 @@ def white_lower_left(board, y, x):
                             continue
                 elif y < 5:
                     for i in range(3):
-                        if board[y+i+1][x-i-1] == '●:
+                        if board[y+i+1][x-i-1] == '●':
                             return True
                             break
                         elif board[y+i+1][x-i-1] == '-':
@@ -225,7 +313,7 @@ def white_lower_left(board, y, x):
             elif x == 4:
                 if y < 4:
                     for i in range(4):
-                        if board[y+i+1][x-i-1] == '●:
+                        if board[y+i+1][x-i-1] == '●':
                             return True
                             break
                         elif board[y+i+1][x-i-1] == '-':
@@ -234,7 +322,7 @@ def white_lower_left(board, y, x):
                             continue
                 elif 4 <= y:
                     for i in range(7-y):
-                        if board[y+i+1][x-i-1] == '●:
+                        if board[y+i+1][x-i-1] == '●':
                             return True
                             break
                         elif board[y+i+1][x-i-1] == '-':
@@ -244,7 +332,7 @@ def white_lower_left(board, y, x):
             elif x == 5:
                 if y < 3:
                     for i in range(5):
-                        if board[y+i+1][x-i-1] == '●:
+                        if board[y+i+1][x-i-1] == '●':
                             return True
                             break
                         elif board[y+i+1][x-i-1] == '-':
@@ -253,7 +341,7 @@ def white_lower_left(board, y, x):
                             continue
                 elif 3 <= y:
                     for i in range(7-y):
-                        if board[y+i+1][x-i-1] == '●:
+                        if board[y+i+1][x-i-1] == '●':
                             return True
                             break
                         elif board[y+i+1][x-i-1] == '-':
@@ -263,7 +351,7 @@ def white_lower_left(board, y, x):
             elif x == 6:
                 if y == 0:
                     for i in range(6):
-                        if board[y+i+1][x-i-1] == '●:
+                        if board[y+i+1][x-i-1] == '●':
                             return True
                             break
                         elif board[y+i+1][x-i-1] == '-':
@@ -272,7 +360,7 @@ def white_lower_left(board, y, x):
                             continue
                 elif 0 < y:
                     for i in range(7-y):
-                        if board[y+i+1][x-i-1] == '●:
+                        if board[y+i+1][x-i-1] == '●':
                             return True
                             break
                         elif board[y+i+1][x-i-1] == '-':
@@ -281,7 +369,7 @@ def white_lower_left(board, y, x):
                             continue
             elif x == 7:
                 for i in range(7-y):
-                    if board[y+i+1][x-i-1] == '●:
+                    if board[y+i+1][x-i-1] == '●':
                         return True
                         break
                     elif board[y+i+1][x-i-1] == '-':
@@ -319,14 +407,101 @@ def white_upper_left(board, y, x):
         if board[y-1][x-1] != '○':
             return False
         else:
-            gap = x
-            for i in range(gap):
-                if board[y-i-1][x-i-1] == '●':
-                    return True
-                    break
-                elif board[y-i-1][x-i-1] == '-':
-                    return False
-                else:
-                    continue
+            if x == 2:
+                for i in range(2):
+                    if board[y-i-1][x-i-1] == '●':
+                        return True
+                        break
+                    elif board[y-i-1][x-i-1] == '-':
+                        return False
+                    else:
+                        continue
+            elif x == 3:
+                if y == 2:
+                    for i in range(2):
+                        if board[y-i-1][x-i-1] == '●':
+                            return True
+                            break
+                        elif board[y-i-1][x-i-1] == '-':
+                            return False
+                        else:
+                            continue
+                elif 2 < y:
+                    for i in range(3):
+                        if board[y-i-1][x-i-1] == '●':
+                            return True
+                            break
+                        elif board[y-i-1][x-i-1] == '-':
+                            return False
+                        else:
+                            continue
+            elif x == 4:
+                if 3 < y:
+                    for i in range(4):
+                        if board[y-i-1][x-i-1] == '●':
+                            return True
+                            break
+                        elif board[y-i-1][x-i-1] == '-':
+                            return False
+                        else:
+                            continue
+                if y <= 3:
+                    for i in range(y):
+                        if board[y-i-1][x-i-1] == '●':
+                            return True
+                            break
+                        elif board[y-i-1][x-i-1] == '-':
+                            return False
+                        else:
+                            continue
+            elif x == 5:
+                if 4 < y:
+                    for i in range(5):
+                        if board[y-i-1][x-i-1] == '●':
+                            return True
+                            break
+                        elif board[y-i-1][x-i-1] == '-':
+                            return False
+                        else:
+                            continue
+                elif y <= 4:
+                    for i in range(y):
+                        if board[y-i-1][x-i-1] == '●':
+                            return True
+                            break
+                        elif board[y-i-1][x-i-1] == '-':
+                            return False
+                        else:
+                            continue
+            elif x == 6:
+                if 5 < y:
+                    for i in range(6):
+                        if board[y-i-1][x-i-1] == '●':
+                            return True
+                            break
+                        elif board[y-i-1][x-i-1] == '-':
+                            return False
+                        else:
+                            continue
+                elif y <= 5:
+                    for i in range(y):
+                        if board[y-i-1][x-i-1] == '●':
+                            return True
+                            break
+                        elif board[y-i-1][x-i-1] == '-':
+                            return False
+                        else:
+                            continue
+            elif x == 7:
+                for i in range(y):
+                    if board[y-i-1][x-i-1] == '●':
+                        return True
+                        break
+                    elif board[y-i-1][x-i-1] == '-':
+                        return False
+                    else:
+                        continue
+            else:
+                pass
     else:
         pass
